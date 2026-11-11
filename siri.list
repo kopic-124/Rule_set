@@ -1,0 +1,53 @@
+# Apple Intelligence / new Siri compatibility rules for Surge.
+# Reviewed 2026-11-11. Surge RULE-SET format; 24 rules.
+# Reference from [Rule]: RULE-SET,appleAI-siri-surge-20261111.list,Ai
+# Replace Ai with an existing policy/group in your Surge profile.
+# This list controls routing, not account/device/OS/language eligibility.
+#
+# Official service inventory:
+# https://support.apple.com/en-us/101555
+# Current Siri eligibility:
+# https://support.apple.com/en-us/127893
+# Community compatibility reference (not an Apple guarantee):
+# https://github.com/RocM301/Apple-Rule/blob/main/Apple%20AI-New
+#
+# Broad ls.apple.com and apps.mzstatic.com rules are intentionally omitted.
+# They return to the remaining routing rules (normally the Apple group).
+# Officially documented Siri, search, PCC and Intelligence extensions.
+DOMAIN,guzzoni.apple.com
+DOMAIN-SUFFIX,smoot.apple.com
+DOMAIN,apple-relay.apple.com
+DOMAIN,apple-relay.cloudflare.com
+DOMAIN,apple-relay.fastly-edge.com
+DOMAIN,cp4.cloudflare.com
+
+# New Siri / relay aliases from the community compatibility list.
+# Exact hosts avoid routing unrelated Apple infrastructure through Ai.
+DOMAIN,api-siri-prod.apple.com
+DOMAIN,seed.siri.apple.com
+DOMAIN,apple-relay.mask.apple-dns.net
+DOMAIN,apple-relay.akamaized.net
+DOMAIN,apple-carry-relay.cloudflare.com
+DOMAIN,mask-api.fe2.apple-dns.net
+
+# Gateway compatibility: preserve existing child-host matching.
+# The fe2 alias was also observed in this router's connection logs.
+# These shared services are not exclusive to Siri.
+DOMAIN-SUFFIX,gateway.icloud.com
+DOMAIN-SUFFIX,gateway.fe2.apple-dns.net
+
+# Narrow startup/service compatibility entries from the community list.
+# Not officially established as mandatory for Siri activation.
+DOMAIN,gspe1-ssl.ls.apple.com
+DOMAIN,wps.apple.com
+DOMAIN,probe.icloud.com
+DOMAIN,metrics.icloud.com
+
+# Preserve the existing Private Relay compatibility routing.
+# These are shared iCloud services, not evidence of Siri-only dependencies.
+DOMAIN,mask-api.fe.apple-dns.net
+DOMAIN,mask-api.icloud.com
+DOMAIN,mask-h2.icloud.com
+DOMAIN-SUFFIX,mask-t.apple-dns.net
+DOMAIN-SUFFIX,mask.apple-dns.net
+DOMAIN,mask.icloud.com
